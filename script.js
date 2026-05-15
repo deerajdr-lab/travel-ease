@@ -18,6 +18,7 @@ function logout() {
     window.location.reload(); // Refresh the page to show the Login button again
 }
 // 1. DATA: Our mini-database
+// This acts as your project's local database
 const travelData = {
     "delhi": {
         places: [
@@ -35,9 +36,28 @@ const travelData = {
             { name: "Louvre Museum", img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400", desc: "The world's largest art museum." }
         ],
         hotels: [
-            // I updated these links to be more reliable
             { name: "Hotel Ritz", img: "https://images.unsplash.com/photo-1551882547-ff43c63faf76?w=400", price: "€450/night" },
             { name: "Paris Marriot", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400", price: "€280/night" }
+        ]
+    },
+    "mumbai": {
+        places: [
+            { name: "Gateway of India", img: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=400", desc: "Iconic arch monument built during the 20th century." },
+            { name: "Marine Drive", img: "https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?w=400", desc: "A scenic 3-kilometre-long promenade along the coast." }
+        ],
+        hotels: [
+            { name: "The Taj Mahal Palace", img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400", price: "₹15,000/night" },
+            { name: "Trident Nariman Point", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400", price: "₹9,000/night" }
+        ]
+    },
+    "goa": {
+        places: [
+            { name: "Calangute Beach", img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400", desc: "The largest and most famous beach in North Goa." },
+            { name: "Basilica of Bom Jesus", img: "https://images.unsplash.com/photo-1601999109332-542b18dbec57?w=400", desc: "UNESCO World Heritage site holding the mortal remains of St. Francis Xavier." }
+        ],
+        hotels: [
+            { name: "Taj Exotica Resort", img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400", price: "₹11,500/night" },
+            { name: "Goa Marriott Resort", img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400", price: "₹8,000/night" }
         ]
     }
 };
