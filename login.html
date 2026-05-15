@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelEase | Login & Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container { max-width: 400px; margin: 100px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .auth-container h2 { text-align: center; color: #333; }
+        .auth-container input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;}
+        .toggle-btn { text-align: center; margin-top: 15px; cursor: pointer; color: #6e8efb; text-decoration: underline; }
+    </style>
+</head>
+<body style="background-color: #f0f4f8;">
+    <div class="auth-container">
+        <h2 id="authTitle">Login</h2>
+        <form id="authForm">
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" style="width: 100%; border-radius: 8px;">Submit</button>
+        </form>
+        <p class="toggle-btn" onclick="toggleAuth()">Don't have an account? Sign Up</p>
+        <p><a href="index.html" style="display:block; text-align:center; margin-top:10px; color:#777;">Back to Home</a></p>
+    </div>
+
+    <script>
+        function toggleAuth() {
+            const title = document.getElementById('authTitle');
+            title.innerText = title.innerText === "Login" ? "Sign Up" : "Login";
+        }
+
+        document.getElementById('authForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const title = document.getElementById('authTitle').innerText;
+
+    // 1. ADMIN LOGIN CHECK
+    if (email === "admin@travel.com" && password === "admin123") {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', 'Admin');
+        alert("Welcome Admin!");
+        window.location.href = "admin.html";
+        return;
+    }
+
+    // 2. SIGN UP LOGIC (Simulated)
+    if (title === "Sign Up") {
+        // In a real app, you'd save this to a database
+        localStorage.setItem('savedEmail', email);
+        localStorage.setItem('savedPassword', password);
+        alert("Account Created! Now please login.");
+        toggleAuth(); // Switch back to login mode
+        return;
+    }
+
+    // 3. REGULAR USER LOGIN CHECK
+    // This checks if the entered password matches a simple default or a "signed up" one
+    const savedEmail = localStorage.getItem('savedEmail') || "user@test.com";
+    const savedPass = localStorage.getItem('savedPassword') || "password123";
+
+    if (email === savedEmail && password === savedPass) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
+        alert("Login Successful!");
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid Email or Password! Try admin@travel.com / admin123");
+    }
+});
+    </script>
+</body>
+</html>

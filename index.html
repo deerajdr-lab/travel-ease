@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEase | Discover & Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav style="text-align: right; padding-right: 20px;">
+    <a href="login.html" style="color: white; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 20px;">Login / Sign Up</a>
+</nav>
+        <h1>TravelEase</h1>
+        <p>Find the best hotels and hidden gems near you</p>
+    </header>
+
+    <main>
+        <section class="search-container">
+            <input type="text" id="cityInput" placeholder="Enter a city (e.g., Paris, Delhi, Goa)...">
+            <button onclick="searchDestinations()">Explore Now</button>
+        </section>
+
+        <section class="results-section">
+            <div id="placesResult">
+                <h2>Tourist Attractions</h2>
+                <div class="grid" id="placesGrid">
+                    <!-- Tourist places will appear here -->
+                </div>
+            </div>
+
+            <div id="hotelsResult">
+                <h2>Top Rated Hotels</h2>
+                <div class="grid" id="hotelsGrid">
+                    <!-- Hotels will appear here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Booking Modal -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeBooking()">&times;</span>
+        <h2>Complete Your Booking</h2>
+        <form id="bookingForm">
+            <label>Check-in Date:</label>
+            <input type="date" required>
+            
+            <label>Number of Guests:</label>
+            <input type="number" min="1" max="10" value="1" required>
+            
+            <label>Your Email:</label>
+            <input type="email" placeholder="example@email.com" required>
+            
+            <button type="submit" class="confirm-btn">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
